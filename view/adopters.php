@@ -2,13 +2,15 @@
 
 <?php
     $adopters_list = $adopter->getAllAdopters();
+    $isSearch      = false;
+
     if (isset($_GET['search']) && isset($_GET['keyword']) && ! empty($_GET['keyword'])) {
+        $isSearch      = true;
         $adopters_list = $adopter->searchAdopters($_GET['keyword']);
         echo "<p>Search results for: \"" . htmlspecialchars($_GET['keyword']) . "\"</p>";
-        if (empty($adopters_list)) {
-            echo "<p>No adopters found matching your search.</p>";
-        }
     }
+
+    if (! empty($adopters_list)):
 ?>
 
 <table border="1">
@@ -38,6 +40,9 @@
     </tr>
     <?php endforeach; ?>
 </table>
+<?php else: ?>
+<p><i>No items.</i></p>
+<?php endif; ?>
 
 <h3>Add New Adopter</h3>
 <form method="POST">

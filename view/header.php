@@ -1,3 +1,3 @@
 <header>
-    <h1>Library Management System</h1>
+    <h1>🐾 Pet Adoption System 🐾</h1>
 </header>
